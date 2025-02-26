@@ -1,0 +1,55 @@
+;; -*- mode: emacs-lisp; lexical-binding:t; coding: utf-8-emacs; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Mon Feb 24 13:45:56 2025
+;; Desktop file format version 208
+;; Emacs version 29.4
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (26556 1940 762995 0) (desktop . "208") "ugo@QUARTZ-KF" nil nil ((((minibuffer . t) (fontsize . 0) (font . "-*-Menlo-regular-normal-normal-*-12-*-*-*-m-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (child-frame-border-width) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "#bbc2cf") (background-color . "#282c34") (line-spacing) (left-fringe . 8) (right-fringe . 8) (no-special-glyphs) (undecorated) (ns-appearance) (ns-transparent-titlebar) (z-group) (no-focus-on-map) (no-accept-focus) (menu-bar-lines . 0) (tab-bar-lines . 0) (tool-bar-lines . 0) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 15) (scroll-bar-height . 15) (alpha) (alpha-background) (fullscreen) (scroll-bar-foreground) (scroll-bar-background) (display-type . color) (background-mode . dark) (cursor-color . "#51afef") (font-parameter) (environment) (last-focus-update . t) (frameset--id . "F608-C43D-1E60-C77C") (frameset--mini t . t) (height . 40) (width . 180) (modeline . t) (unsplittable) (left . 1869) (top + -321) (icon-name) (visibility . t) (display . "QUARTZ-KF") (explicit-name) (tool-bar-position . top)) ((min-height . 8) (min-width . 20) (min-height-ignore . 6) (min-width-ignore . 10) (min-height-safe . 2) (min-width-safe . 4) (min-pixel-height . 112) (min-pixel-width . 140) (min-pixel-height-ignore . 84) (min-pixel-width-ignore . 70) (min-pixel-height-safe . 28) (min-pixel-width-safe . 28)) vc (pixel-width . 1276) (pixel-height . 546) (total-width . 182) (total-height . 39) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (hc (pixel-width . 1276) (pixel-height . 266) (total-width . 182) (total-height . 19) (normal-height . 0.5) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 639) (pixel-height . 266) (total-width . 91) (total-height . 19) (normal-height . 1.0) (normal-width . 0.5) (buffer "ll1.rkt" (selected . t) (hscroll . 0) (fringes 8 8 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 1898) (start . 1685)) (prev-buffers ("ll1.rkt" 1487 1866) ("*Geiser Racket REPL*" 2637 3375) ("*Geiser Debug*" 1 1))) (leaf (last . t) (pixel-width . 637) (pixel-height . 266) (total-width . 91) (total-height . 19) (normal-height . 1.0) (normal-width . 0.5) (buffer "*Geiser Debug*" (selected) (hscroll . 0) (fringes 8 8 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 167) (start . 1)))) (leaf (last . t) (pixel-width . 1276) (pixel-height . 280) (total-width . 182) (total-height . 20) (normal-height . 0.5) (normal-width . 1.0) (buffer "*Geiser Racket REPL*" (selected) (hscroll . 0) (fringes 8 8 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 38896) (start . 38580)) (prev-buffers ("*Geiser Racket REPL*" 38158 38896) ("ll1.rkt" 615 810)))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq file-name-history '("~/projects/ugovaretto-education/the-little-learner/" "~/projects/ugovaretto-education/the-little-learner/ll1.rkt" "~/TripRequest.org" "~/tmp/the-little-learner-geiser" "~/tmp/llm-coro.cpp" "~/lbl-reservation.org" "~/tmp/the-little-learner-1.scm" "~/projects/ugovaretto-education/emacs/cheatsheet.md" "~/projects/ugovaretto-education/emacs/org-mode-cheatsheet.org" "~/.config/emacs/init.el" "~/OneDrive/NERSC/Latest Job Interview/presentaion-notes.org" "~/Downloads/tcp-programs/program-a.c" "~/projects/ugovaretto-education/hackerrank-submissions/happy-ladybug/output/output10.txt" "~/projects/ugovaretto-education/hackerrank-submissions/happy-ladybug/cpp/happy-ladybug.cpp" "~/projects/ugovaretto-education/hackerrank-submissions/happy-ladybug/cpp/output10-me.txt" "~/projects/ugovaretto-education/hackerrank-submissions/happy-ladybug/input/input10.txt" "~/projects/ugovaretto-education/hackerrank-submissions/happy-ladybug/happy-ladybugs-English.pdf" "~/projects/ugovaretto-education/hackerrank-submissions/.gitignore" "~/projects/ugovaretto-education/hackerrank-submissions/manasa-and-stones/lisp/manasa-and-stones.lisp" "~/projects/ugovaretto-education/hackerrank-submissions/cavity-map/lisp/cavity-map.lisp" "~/projects/ugovaretto-education/hackerrank-submissions/the-grid-search/lisp/the-grid-search.lisp" "~/projects/ugovaretto-education/hackerrank-submissions/the-grid-search/input/input14.txt" "~/projects/ugovaretto-education/hackerrank-submissions/the-grid-search/input/input15.txt" "~/projects/ugovaretto-education/hackerrank-submissions/the-grid-search/output/output01.txt" "~/projects/ugovaretto-education/hackerrank-submissions/the-grid-search/output/output00.txt" "~/projects/ugovaretto-education/hackerrank-submissions/the-grid-search/input/input00.txt" "~/projects/ugovaretto-education/hackerrank-submissions/manasa-and-stones/output/output07.txt"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "/Users/ugo/projects/ugovaretto-education/the-little-learner/ll1.rkt"
+  "ll1.rkt"
+  'scheme-mode
+  '(font-lock-mode display-line-numbers-mode ligature-mode yas-minor-mode company-mode eldoc-mode geiser-autodoc-mode geiser-mode rainbow-delimiters-mode)
+  1898
+  '(1740 nil)
+  nil
+  nil
+  '((buffer-display-time 26556 1940 451182 0) (buffer-file-coding-system . utf-8-unix))
+  '((mark-ring (1584 1298 1270 1461 1209 946 1040 859 938 934 894 894 894 779 636 1898))))
+
+(desktop-create-buffer 208
+  "/Applications/Racket v8.15/collects/racket/private/promise.rkt"
+  "promise.rkt"
+  'scheme-mode
+  '(font-lock-mode display-line-numbers-mode ligature-mode yas-minor-mode company-mode eldoc-mode geiser-autodoc-mode geiser-mode rainbow-delimiters-mode)
+  5303
+  '(5302 nil)
+  nil
+  nil
+  '((buffer-display-time 26553 52280 148812 0) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "*info*"
+  'Info-mode
+  '(display-line-numbers-mode ligature-mode yas-minor-mode company-mode font-lock-mode isearch-fold-quotes-mode)
+  6031
+  '(nil nil)
+  t
+  '("/Applications/Emacs.app/Contents/Resources/info/info" "Help" ((history ("/Applications/Emacs.app/Contents/Resources/info/efaq" "Top" 1267))))
+  '((tab-width . 8) (buffer-display-time 26553 52155 270927 0) (buffer-file-coding-system . utf-8-unix) (case-fold-search . t))
+  '((mark-ring nil)))
+

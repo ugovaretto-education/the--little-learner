@@ -1,0 +1,170 @@
+;; (require malt plot)
+
+
+(define p
+  (λ (m)
+  (print m)
+  (newline)))
+
+(define (mmin a b)
+  (if (< a b)
+      a
+      b))
+
+(define (loop from to step)
+  (do ((start from (+ start step)))
+      ((>= start to) start)
+    (print start)
+    (newline)))
+
+(define make-list
+  (case-lambda
+    [(n) (make-list n #f)]
+    [(n x)
+     (do ([n n (- n 1)] [ls '() (cons x ls)])
+         ((zero? n) ls))]))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Utility compile before (require malt) !!!
+(require plot)
+(define vmin
+  (λ (v)
+    (vector-argmin (λ (x) x) v)))
+
+(define vmax
+  (λ (v)
+    (vector-argmax (λ (x) x) v)))
+
+
+(define scatter-plot
+  (lambda (xs ys color)
+    (let
+        (
+         (xm (- (vmin xs) 0.1))
+         (xM (+ (vmax xs) 0.1))
+         (ym (- (vmin ys) 0.1))
+         (yM (+ (vmax ys) 0.1))
+         )
+    (plot
+     (points
+      (vector-map vector xs ys)
+      #:color color
+      #:x-min xm
+      #:x-max xM
+      #:y-min ym
+      #:y-max yM
+    )))))
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Chapter 1
+
+(define line1
+  (λ (x)
+    (λ (w b)
+      (+ (* w x) b))))
+
+
+(define line1-eq
+  (λ (w b)
+    (λ (x)
+      (+ (* w x) b))))
+
+;; (require plot)
+;; (plot (function (line-eq '(0.5 -1)) (- 2) 2 #:label "y = line-eq(x)"))
+;; applicaiton x -> y: (vector-map (line-eq 0.5 1) #(1 2 3 4))
+;; Theta: θ 003B8
+
+;; (require plot)
+;; (define xs '(0 1 2 3 4 5))
+;; (define ys '(0 1 4 9 16 25))
+;; (plot (points (map vector xs ys) #:color 'red))
+;; use vector-map if xs ys are vectors
+
+
+
+(define line
+  (λ (x)
+    (λ (θ)
+      (+ (* (car θ) x) (cadr θ)))))
+
+(defGine line-eq
+  (λ (θ)
+    (λ (x)
+      (+
+       (* (car θ) x)
+       (cadr θ)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Chapter 2
+
+(define add1
+  (λ (x)
+    (set! x (+ 1 x))
+    x))
+
+(define rank1 ;; no tail recursion
+  (λ (t)
+    (cond
+     ((scalar? t) 0)
+     (else
+      (+ 1 (rank1 (car t)))))))
+
+(define rank ;; tail recursive
+  (λ (t)
+    (ranked t 0)))
+
+(define ranked
+  (λ (t acc)
+    (cond
+     ((scalar? t) acc)
+     (else (rankedd (car t) (add1 acc))))))
+
+
+(define shape
+  (λ (t)
+    (cond
+     ((scalar? t) (list))
+     (else (cons (length t) (shapee (car t)))))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Interlude I
+
+(define sum
+  (λ (t)
+    (summed t 0)))
+
+(define summed
+  (λ (t acc)
+    (cond
+     ((empty? t) acc)
+     (else
+      (summed (cdr t) (+ acc (car t)))))))
+
+(define vsum
+  (λ (t)
+    (vsummed t (- (vector-length t) 1) 0.0)))
+
+(define vsummed2
+  (λ (t i acc)
+    (cond
+     ((< i 0) (error "AAARGH") 0)
+     ((= i 0)
+      (displayln "ZERO")
+      acc)
+      ;;(+ acc (vector-ref t 0)))
+     (else
+      (displayln "NONZERO")
+      (displayln i)
+      (displayln acc)
+      (vsummed t (- i 1) (+ acc (vector-ref t i)))))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Chapter 3
+
+(define line-xs '#(2.0 1.0 4.0 3.0))
+(define line-ys '#(1.8 1.2 4.2 3.3))
+
+
+
