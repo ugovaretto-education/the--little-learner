@@ -1,0 +1,720 @@
+racket@>   M-x g e i s e r - r e p l - r e s t a r t - r e p l RET
+It's been nice interacting with you!
+Press C-c C-z to bring me back.
+Welcome to Racket v8.15 [cs].
+racket@> (define xs #(1 4 5 6))
+racket@> (t/- xs xs)
+zs: undefined;
+ cannot reference an identifier before its definition
+  in module: top-level
+  context...:
+   body of top-level
+   t/-
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (t/- xs xs)
+'#(5 5 5 5)
+racket@> (tt/- xs xs)
+'#(5 5 5 5)
+racket@> (tt/- xs xs)
+'#(0 0 0 0)
+racket@> (reduce-vectors xs xs *)
+'#(1 16 25 36)
+racket@> (foldl + '(2 3 4))
+foldl: arity mismatch;
+ the expected number of arguments does not match the given number
+  expected: at least 3
+  given: 2
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (foldl + 10 '(2 3 4))
+19
+racket@> (((lambda args ...) (displayln (car args))) 2 3)
+stdin::221837: ...: ellipses not allowed as an expression
+  in: ...
+  location...:
+   stdin::221837
+  context...:
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (((lambda . args) (displayln (car args))) 2 3)
+stdin::223340: lambda: bad syntax
+  in: (lambda . args)
+  location...:
+   stdin::223340
+  context...:
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (define (procedure . args) (displayln args))
+racket@> (procedure 3 4 4)
+(3 4 4)
+racket@> (define pp ((lambda . args) (car args)))
+stdin::263314: lambda: bad syntax
+  in: (lambda . args)
+  location...:
+   stdin::263314
+  context...:
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (define pp ((lambda (. args)) (car args)))
+stdin::265453: read-syntax: illegal use of `.`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> args: undefined;
+ cannot reference an identifier before its definition
+  in module: top-level
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> stdin::265874: read-syntax: unexpected `)`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> stdin::266087: read-syntax: unexpected `)`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> args: undefined;
+ cannot reference an identifier before its definition
+  in module: top-level
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> stdin::266510: read-syntax: unexpected `)`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> stdin::266723: read-syntax: unexpected `)`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (define pp ((lambda (&rest args)) (car args)))
+stdin::267948: lambda: bad syntax
+  in: (lambda (&rest args))
+  location...:
+   stdin::267948
+  context...:
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (define pp ((lambda .args) (car args)))
+stdin::269199: lambda: bad syntax
+  in: (lambda .args)
+  location...:
+   stdin::269199
+  context...:
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (define pp ((lambda . args) (car args)))
+stdin::269829: lambda: bad syntax
+  in: (lambda . args)
+  location...:
+   stdin::269829
+  context...:
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (define pp ((lambda . args (car args))))
+stdin::270341: read-syntax: illegal use of `.`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> #<procedure:car>
+racket@> args: undefined;
+ cannot reference an identifier before its definition
+  in module: top-level
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> stdin::270798: read-syntax: unexpected `)`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> stdin::271011: read-syntax: unexpected `)`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> stdin::271224: read-syntax: unexpected `)`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> stdin::271437: read-syntax: unexpected `)`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (define v1 #(1 2 3 4 5))
+racket@> (reduce-multi-vectors v1 v1 v1 +)
+reduce-multi-vectors: arity mismatch;
+ the expected number of arguments does not match the given number
+  expected: 2
+  given: 4
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (reduce-multi-vectors (list v1 v1 v1) +)
+'#(3 5 7 9 11)
+racket@> (define foo
+           "This is the documentation for function foo"
+           (lambda (s)
+             (* 3 s)))
+stdin::763929: define: bad syntax (multiple expressions after identifier)
+  in: (define foo "This is the documentation for function foo" (lambda (s) (* 3 s)))
+  location...:
+   stdin::763929
+  context...:
+   /Applications/Racket v8.15/collects/racket/private/norm-define.rkt:165:4: normalize-definition
+   /Applications/Racket v8.15/collects/racket/private/kw.rkt:1169:2
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (define procedure . args (displayln args))
+stdin::816466: read-syntax: illegal use of `.`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> #<procedure:displayln>
+racket@> args: undefined;
+ cannot reference an identifier before its definition
+  in module: top-level
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> stdin::816935: read-syntax: unexpected `)`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> stdin::817148: read-syntax: unexpected `)`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (reduce-v + vv vv vv)
+vv: undefined;
+ cannot reference an identifier before its definition
+  in module: top-level
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> vv
+vv: undefined;
+ cannot reference an identifier before its definition
+  in module: top-level
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> v
+v: undefined;
+ cannot reference an identifier before its definition
+  in module: top-level
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> v1
+'#(1 2 3 4 5)
+racket@> (reduce-v + v1 v1 v1)
+car: contract violation
+  expected: pair?
+  given: #<procedure:+>
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (reduce-v + v1 v1 v1)
+car: contract violation
+  expected: pair?
+  given: #<procedure:+>
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (define (proc . vs) (displayln (car vs)))
+racket@> (proc + 3 4)
+#<procedure:+>
+racket@> (reduce-v '+ v1 v1 v1)
+car: contract violation
+  expected: pair?
+  given: '+
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (proc '+ 5 6)
++
+racket@> (reduce-v '+ v1 v1 v1)
+car: contract violation
+  expected: pair?
+  given: '+
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (reduce-v '+ v1 v1 v1)
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: '+
+  context...:
+   body of top-level
+   apply-element
+   /Applications/Racket v8.15/collects/racket/private/more-scheme.rkt:75:13: doloop
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (apply '+ 3 4)
+apply: contract violation
+  expected: list?
+  given: 4
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (apply '+ (list 3 4))
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: '+
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (reduce-v '+ v1 v1 v1)
+'#(3 5 7 9 11)
+racket@> (reduce-v + v1 v1 v1)
+'#(3 5 7 9 11)
+racket@> (symbol->function '+)
+#<procedure:+>
+racket@> (symbol->function +)
+#<procedure:+>
+racket@> (vectors-reduce + v1 v1 v1)
+'#(3 5 7 9 11)
+racket@> (t+ v1 v1)
+vector-length: contract violation
+  expected: vector?
+  given: '(#(1 2 3 4 5) #(1 2 3 4 5))
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (t+ v1 v1)
+'#(2 3 4 5 6)
+racket@> (((uv-l2-loss line) line-xs line-ys)) '(0 0))
+arity mismatch;
+ the expected number of arguments does not match the given number
+  expected: 1
+  given: 0
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> '(0 0)
+racket@> stdin::1209290: read-syntax: unexpected `)`
+  context...:
+   /Users/ugo/.config/emacs/elpa/geiser-racket-20210421.125/src/geiser/user.rkt:89:0
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (((uv-l2-loss line) line-xs line-ys) '(0 0))
+sqr: contract violation
+  expected: number?
+  given: '#(-1.8 -1.8 -1.8 -1.8)
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> ((uv-l2-loss line) line-xs line-ys)
+#<procedure>
+racket@> (line line-xs)
+#<procedure>
+racket@> ((line line-xs) '(4 4))
+'#(12.0 8.0 20.0 16.0)
+racket@> (-t line-xs line-ys)
+'#(-0.19999999999999996 -0.8 2.2 1.2999999999999998)
+racket@> (((uv-l2-loss line) line-xs line-ys) (list 0 0))
+sqr: contract violation
+  expected: number?
+  given: '#(-1.8 -1.8 -1.8 -1.8)
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> 
+racket@> (((uv-l2-loss line) line-xs line-ys) (list 0 0))
+#(0 0 0 0)
+0
+racket@> (((uv-l2-loss line) line-xs line-ys) (list 1 1))
+#(3.0 2.0 5.0 4.0)
+0
+racket@> (sum line-xs)
+10.0
+racket@> (((uv-l2-loss line) line-xs line-ys) (list 1 1))
+16.560000000000002
+racket@> (number? 2.4)
+#t
+racket@> (define m #(#(1 2) #(4 5)))
+racket@> m
+'#(#(1 2) #(4 5))
+racket@> (vector-ref '(0 0) m)
+vector-ref: contract violation
+  expected: vector?
+  given: '(0 0)
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> ((vector-ref (vector-ref m 1) 1))
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: 5
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (vector-ref m 1)
+'#(4 5)
+racket@> (vector-ref (vector-ref m 1) 0)
+4
+racket@> (require srfi/25)
+racket@> (array-ref m 0 1)
+not an array
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (vector-ref m 0 1)
+vector-ref: arity mismatch;
+ the expected number of arguments does not match the given number
+  expected: 2
+  given: 3
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-array 2 1)
+make-array: shape is not a shape
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-array '(2 2) 1)
+make-array: shape is not a shape
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-array '(4 4))
+make-array: shape is not a shape
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-array (shape 2 2))
+#<array:srfi-9-record-type-descriptor>
+racket@> (define a (make-array (shape 2 2)))
+racket@> a
+#<array:srfi-9-record-type-descriptor>
+racket@> (array-ref a 1 1)
+array-ref: index 1 1  not in bounds [2..2) 
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/share/pkgs/srfi-lib/srfi/25/array.rkt:451:2: array:check-indices
+   /Applications/Racket v8.15/share/pkgs/srfi-lib/srfi/25/ix-ctor.scm:1:0: array-ref
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (array-ref a '(1 1))
+not an index object
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (array-ref a)
+array-ref: index  not in bounds [2..2) 
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/share/pkgs/srfi-lib/srfi/25/array.rkt:451:2: array:check-indices
+   /Applications/Racket v8.15/share/pkgs/srfi-lib/srfi/25/ix-ctor.scm:1:0: array-ref
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (array-ref a 0)
+array-ref: index 0  not in bounds [2..2) 
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/share/pkgs/srfi-lib/srfi/25/array.rkt:451:2: array:check-indices
+   /Applications/Racket v8.15/share/pkgs/srfi-lib/srfi/25/ix-ctor.scm:1:0: array-ref
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (define a (make-array (shape '(0 2) '(0 2))))
+shape: bounds are not pairwise non-decreasing exact integers: #2<list> #2<list> 
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (define a (make-array (shape 0 2 0 2)))
+racket@> (array-ref a 0 0)
+0
+racket@> (define a (vector))
+racket@> a
+'#()
+racket@> (empty? '())
+#t
+racket@> (vector-empty? #())
+#t
+racket@> (foo 3)
+x: undefined;
+ cannot reference an identifier before its definition
+  in module: top-level
+  context...:
+   body of top-level
+   foo
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (foo 3)
+non zero
+3
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: #<void>
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (foo 3)
+non zero
+3
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: #<void>
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (foo 0)
+zero
+racket@> (foo 0)
+zero
+racket@> (foo 3)
+non zero
+3
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: #<void>
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (foo 3)
+non zero
+ 
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: #<void>
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (foo 3)
+non zero
+ 
+racket@> v
+v: undefined;
+ cannot reference an identifier before its definition
+  in module: top-level
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> a
+'#()
+racket@> (vector-append a 3)
+vector-append: contract violation
+  expected: vector?
+  given: 3
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (vector-append 3)
+vector-append: contract violation
+  expected: vector?
+  given: 3
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (vector-append a #(3))
+'#(3)
+racket@> (define b #())
+racket@> (set! b a)
+racket@> b
+'#()
+racket@> a
+'#()
+racket@> (set! a (vector-append a #(3)))
+racket@> a
+'#(3)
+racket@> (set! b a)
+racket@> b
+'#(3)
+racket@> (vector-set! b 0 19)
+racket@> b
+'#(19)
+racket@> a
+'#(19)
+racket@> 
+racket@> (make-tensor '(2 2) #())
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: '#()
+  context...:
+   body of top-level
+   make-tensor
+   [repeats 1 more time]
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '(2 2) '#())
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: '#()
+  context...:
+   body of top-level
+   make-tensor
+   [repeats 1 more time]
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '(2 2) #())
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: '#()
+  context...:
+   body of top-level
+   make-tensor
+   [repeats 1 more time]
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '(2 2) #())
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: '#()
+  context...:
+   body of top-level
+   make-tensor
+   [repeats 1 more time]
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '(2 2) #())
+'#(0 0)
+racket@> (make-tensor '(2 2) #())
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: '#()
+  context...:
+   body of top-level
+   make-tensor
+   [repeats 1 more time]
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor )
+make-tensor: arity mismatch;
+ the expected number of arguments does not match the given number
+  expected: 2
+  given: 0
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '(2 2) #())
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: '#()
+  context...:
+   body of top-level
+   make-tensor
+   [repeats 1 more time]
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '(2 2) #())
+vector-set!: contract violation
+  expected: (and/c vector? (not/c immutable?))
+  given: #<void>
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (vector-set! a 1 3)
+vector-set!: index is out of range
+  index: 1
+  valid range: [0, 0]
+  vector: '#(19)
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (vector-set! a 0 3)
+racket@> a
+'#(3)
+racket@> 
+racket@> (make-tensor '(2 2))
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: '#()
+  context...:
+   body of top-level
+   make-tensor
+   [repeats 1 more time]
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '(2 2))
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: '#()
+  context...:
+   body of top-level
+   make-tensor
+   [repeats 1 more time]
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '(2 2))
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: '#(0)
+  context...:
+   body of top-level
+   make-tensor
+   [repeats 1 more time]
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '())
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: '#(0)
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '())
+'#(0)
+racket@> (make-tensor '(2 2))
+'#(#(#(0) #(0)) #(#(0) #(0)))
+racket@> (make-tensor '(1 1))
+'#(#(#(0)))
+racket@> (make-tensor '(2 2))
+car: contract violation
+  expected: pair?
+  given: '()
+  context...:
+   body of top-level
+   make-tensor
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '(2 2))
+'#(#(0.0 0.0) #(0.0 0.0))
+racket@> (make-tensor '(2 2))
+'#(#(0.0 0.0) #(0.0 0.0))
+racket@> (make-tensor '(2 2) pi)
+'#(#(0.0 0.0) #(0.0 0.0))
+racket@> (make-tensor '(2 2) 4)
+'#(#(0.0 0.0) #(0.0 0.0))
+racket@> (make-tensor '(2 2) 4)
+'#(#(0.0 0.0) #(0.0 0.0))
+racket@> (make-tensor (init-value 5))
+init-value: undefined;
+ cannot reference an identifier before its definition
+  in module: top-level
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '(2 2) 4)
+'#(#(0.0 0.0) #(0.0 0.0))
+racket@> (make-vector 2 56)
+'#(56 56)
+racket@> (make-tensor '(2 2) 4)
+make-tensor: arity mismatch;
+ the expected number of arguments does not match the given number
+  expected: 2
+  given: 1
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '(2 2) 4)
+make-tensor: arity mismatch;
+ the expected number of arguments does not match the given number
+  expected: 2
+  given: 1
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (make-tensor '(2 2) 4)
+'#(#(4 4) #(4 4))
+racket@> (make-tensor '(2 2))
+'#(#(0.0 0.0) #(0.0 0.0))
+racket@> (define t (make-tensor '(2 3)))
+racket@> t
+'#(#(0.0 0.0 0.0) #(0.0 0.0 0.0))
+racket@> (uv/tensor-set t '(1 2) 123)
+uv/tensor-set: arity mismatch;
+ the expected number of arguments does not match the given number
+  expected: 3
+  given: 2
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (uv/tensor-set t '(1 2) 123)
+racket@> t
+'#(#(0.0 0.0 0.0) #(0.0 0.0 123))
+racket@> (uv/tensor-get t '(1 2))
+uv/tensor-get: arity mismatch;
+ the expected number of arguments does not match the given number
+  expected: 2
+  given: 1
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> (uv/tensor-get t '(1 2))
+123
+racket@> (vector-length 3)
+vector-length: contract violation
+  expected: vector?
+  given: 3
+  context...:
+   body of top-level
+   /Applications/Racket v8.15/collects/racket/repl.rkt:11:26
+racket@> 
