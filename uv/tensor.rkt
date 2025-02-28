@@ -18,7 +18,7 @@
 (define shape
   (λ (t)
     (cond
-     ((= 1 (rank t)) (vector-length t))
+     ((= 1 (rank t)) (list (vector-length t)))
      (else (cons (vector-length t) (shape (vector-ref t 0)))))))
 
 
@@ -142,7 +142,7 @@
             ((= i (vector-length t)) a)))))
 
 (provide uv/tensor-rand)
-(define tensor-rand
+(define uv/tensor-rand
   (lambda (t)
     (let ((coord (tensor-rand-coord (shape t) '())))
       (uv/tensor-ref t coord))))
@@ -151,5 +151,25 @@
   (lambda (s r)
     (if (empty? s)
         (r)
-        (tensor-rand-coord (cdr s) (cons (rand (car s)) r)))))
- 
+        (tensor-rand-coord (cdr s) (cons (random (car s)) r)))))
+
+(provide uv/tensor-kernel)
+(define uv/tensor-kernel
+  (lambda (in out k)
+    (tensor-kernel in out k #())))
+
+(define tensor-kernel
+  (lambda (in out k coord)
+    (if (= 1 (rank in))
+        (do ((i 0 (+ 1 i)))
+            ((= i (vector-length in)) out)
+          (vector-set! out i
+                       (k (vector-append coord (vector i)) (vector-ref in i))))
+        (do ((i 0 (+ 1 i)))
+            ((= i (vector-length in)) out)
+          (tensor-kernel
+           (vector-ref in i)
+           (vector-ref out i)
+           k
+           (vector-append coord (vector i)))))))
+             
