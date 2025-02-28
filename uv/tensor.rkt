@@ -1,5 +1,8 @@
 #lang racket
 
+(define scalar? number?)
+
+(provide rank)
 (define rank ;; tail recursive
   (λ (t)
     (ranked t 0)))
@@ -8,14 +11,23 @@
   (λ (t acc)
     (cond
      ((number? t) acc)
-     (else (ranked (car t) (add1 acc))))))
+     (else (ranked (vector-ref t 0) (+ 1 acc))))))
 
 
+(provide shape)
 (define shape
   (λ (t)
     (cond
-     ((scalar? t) (list))
-     (else (cons (length t) (shapee (car t)))))))
+     ((= 1 (rank t)) (vector-length t))
+     (else (cons (vector-length t) (shape (vector-ref t 0)))))))
+
+
+(provide vector-reduce)
+(define vector-reduce
+  (lambda (f xs)
+    (do ((i 1 (+ i 1))
+         (a (vector-ref xs 0) (f (vector-ref xs i) a)))
+        ((= i (vector-length xs)) a))))
 
 
 (define reduce-vectors
@@ -69,13 +81,13 @@
      (else
       (vsummed t (- i 1) (+ acc (vector-ref t i)))))))
 
-
+(provide uv/make-tensor)
 (define uv/make-tensor
   (lambda (shape (init-value 0.0))
     (let ((v (make-vector (car shape) init-value)))
       (do ((i 0 (+ i 1)))
           ((or (= i (vector-length v)) (empty? (cdr shape))) v)
-        (vector-set! v i (make-tensor (cdr shape) init-value))))))
+        (vector-set! v i (uv/make-tensor (cdr shape) init-value))))))
 
 (define uv/tensor-ref
   (lambda (t coord)
@@ -90,25 +102,54 @@
         (uv/tensor-set! (vector-ref t (car coord)) (cdr coord) e))))
 
 (define uv/tensor-bin-op
-  (lambda (f t1 t2 t)
-    (if (number? (vector-ref t1 0))
-        (set! t (reduce-vectors t1 t2 f))
-        (do ((i 0 (+ 1 i))
-             (t (make-vector (vector-length t1))))
-            ((= i (vector-length t1)))
-          (uv/tensor-bin-op
-           f (vector-ref t1 i) (vector-ref t2 i) (vector-ref t i))))))
+  (lambda (f t1 t2)
+      (if (number? (vector-ref t1 0))
+          (reduce-vectors t1 t2 f)
+          (do ((i 0 (+ 1 i))
+               (t (make-vector (vector-length t1))))
+              ((= i (vector-length t1)) t)
+            (vector-set! t i
+                         (uv/tensor-bin-op
+                          f
+                          (vector-ref t1 i) (vector-ref t2 i)))))))
 
+(provide uv/tensor-foldl)
 (define uv/tensor-foldl
   (lambda (ts f acc)
-    (if (empty? ts)
-        (acc)
-        ((uv/tensor-foldl (cdr ts) f (uv/tensor-bin-op f acc (car ts)))))))
+    (match ts
+        ((list h) (uv/tensor-bin-op f h acc))
+        (_ (uv/tensor-foldl (cdr ts) f (uv/tensor-bin-op f acc (car ts)))))))
 
 (provide uv/tensor-fold)
 (define uv/tensor-fold
   (lambda (f ts)
-    (uv-tensor-foldl (cdr ts) f (car ts))))
+    (uv/tensor-foldl (cdr ts) f (car ts))))
+
+(provide uv/tensor-mfold)
+(define (uv/tensor-mfold . args)
+  (uv/tensor-fold (car args) (cdr args)))
 
 
+(provide uv/md-reduce)
+(define uv/md-reduce
+  (lambda (f t acc)
+    (if (number? (vector-ref t 0))
+        (f (vector-reduce f t) acc)
+        (do ((i 1 (+ 1 i))
+             (a (uv/md-reduce
+                 f (vector-ref t 0) acc)
+                (f (uv/md-reduce f (vector-ref t i) a))))
+            ((= i (vector-length t)) a)))))
 
+(provide uv/tensor-rand)
+(define tensor-rand
+  (lambda (t)
+    (let ((coord (tensor-rand-coord (shape t) '())))
+      (uv/tensor-ref t coord))))
+
+(define tensor-rand-coord
+  (lambda (s r)
+    (if (empty? s)
+        (r)
+        (tensor-rand-coord (cdr s) (cons (rand (car s)) r)))))
+ 
